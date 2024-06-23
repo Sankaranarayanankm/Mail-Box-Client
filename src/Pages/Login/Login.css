@@ -1,0 +1,21 @@
+.login {
+  border: 1px solid gray;
+  width: 400px;
+  height: auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: black;
+  font-weight: 500;
+  font-size: large;
+  box-shadow: 1px 1px 1px 1px rgb(89, 27, 233);
+}
+
+.login__heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

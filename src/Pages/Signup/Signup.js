@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "./Signup.css";
 import { Button, Form } from "react-bootstrap";
-import APIKEY from "../APIKEY";
+import { useHistory } from "react-router-dom";
+import "./Signup.css";
+import APIKEY from "../../APIKEY";
 const Signup = () => {
-  console.log(APIKEY);
+  const history = useHistory();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -45,6 +46,7 @@ const Signup = () => {
         throw new Error(errorData.error.message);
       }
       console.log("User has successfully signed up");
+      history.push('/login');
     } catch (error) {
       alert(error.message);
       console.log(error);
