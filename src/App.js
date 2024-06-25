@@ -1,11 +1,17 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useEffect } from "react";
 import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Welcome from "./Pages/Welcome";
+import "./App.css";
+import { useDispatch } from "react-redux";
+import { loadLocalStorage } from "./Store/actions/auth-actions";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadLocalStorage());
+  }, [dispatch]);
   return (
     <div>
       <Switch>

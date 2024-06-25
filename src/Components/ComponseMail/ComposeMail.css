@@ -1,0 +1,41 @@
+.composeMail {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.composeMail__input {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.composeMail__input > label {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.composeMail__input > input {
+  flex: 1;
+  border: none;
+  padding: 5px;
+}
+
+.composeMail__input > input:focus {
+  outline: none;
+}
+
+.editorClassName {
+  height: 500px;
+  margin: 10px 0;
+  scrollbar-width: none;
+}
+
+
+
+button {
+ width: 60px;
+}

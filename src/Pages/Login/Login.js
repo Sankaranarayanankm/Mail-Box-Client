@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Button, Form } from "react-bootstrap";
 import APIKEY from "../../APIKEY";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../Store/auth-slice";
+import { login } from "../../Store/actions/auth-actions";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [state, setState] = useState({
     email: "",
@@ -21,7 +25,6 @@ const Login = () => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(state);
     try {
       const response = await fetch(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${APIKEY}`,
@@ -43,6 +46,12 @@ const Login = () => {
       }
       const resData = await response.json();
       console.log(resData);
+      const obj = {
+        token: resData.idToken,
+        email: resData.email,
+      };
+      dispatch(login(obj));
+      console.log(obj);
       history.push("/welcome");
     } catch (error) {
       console.log(error);
@@ -77,6 +86,10 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Submit
         </Button>
+        <p>
+          Don't have an account?
+          <Link to="/signup">Signup</Link>
+        </p>
       </Form>
     </div>
   );

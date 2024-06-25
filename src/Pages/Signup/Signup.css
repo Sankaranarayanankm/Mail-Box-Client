@@ -18,3 +18,8 @@
 outline: none !important;
 box-shadow: none !important;
 }
+
+.form p >a{
+  text-decoration: none;
+  color:silver;
+}

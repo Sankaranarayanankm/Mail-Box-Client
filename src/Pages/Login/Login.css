@@ -19,3 +19,8 @@
   outline: none !important;
   box-shadow: none !important;
 }
+
+.login p >a{
+  text-decoration: none;
+  color:silver;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import "./Signup.css";
 import APIKEY from "../../APIKEY";
 const Signup = () => {
@@ -46,7 +46,7 @@ const Signup = () => {
         throw new Error(errorData.error.message);
       }
       console.log("User has successfully signed up");
-      history.push('/login');
+      history.push("/login");
     } catch (error) {
       alert(error.message);
       console.log(error);
@@ -95,6 +95,10 @@ const Signup = () => {
         <Button variant="primary" type="submit">
           Submit
         </Button>
+        <p>
+          Have an Account?
+          <Link to="/login">Login</Link>
+        </p>
       </Form>
     </div>
   );
