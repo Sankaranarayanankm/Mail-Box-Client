@@ -1,5 +1,6 @@
 import React from "react";
-import ComposeMail from "../Components/ComponseMail/ComposeMail";
+import ComposeMail from "../Components/ComposeMail/ComposeMail";
+// import ComposeMail from "../Components/ComposeMail/ComposeMail";
 
 const Welcome = () => {
   return (

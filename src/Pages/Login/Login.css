@@ -24,3 +24,6 @@
   text-decoration: none;
   color:silver;
 }
+.btn{
+  width: fit-content;
+}
