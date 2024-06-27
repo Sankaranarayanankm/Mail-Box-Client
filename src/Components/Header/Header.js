@@ -13,7 +13,7 @@ const Header = () => {
           src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-512.png"
           alt="mail logo"
         />
-        <h1>Mail-Box Client</h1>
+        <h3>EchoMail</h3>
       </div>
       <div className="header__middle">
         <SearchIcon />

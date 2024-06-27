@@ -13,7 +13,9 @@
 }
 .header__left > img {
   width: fit-content;
-  height: 50px;
+  height: 40px;
+}
+.header__left > h3 {
 }
 
 .header__middle {

@@ -7,6 +7,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loadLocalStorage } from "./Store/actions/auth-actions";
 import MailBody from "./Pages/Mail/MailBody";
+import ComposeMail from "./Components/ComposeMail/ComposeMail";
 
 const App = () => {
   const login = useSelector((state) => state.auth.isLogin);
@@ -33,14 +34,15 @@ const App = () => {
           </Route>
         )}
         {login && (
-          <Route exact path="/">
+          <Route path="/mail">
             <MailBody />
           </Route>
         )}
-        <Route path="*">
+        {/* <Route path="/compose">{login ? <ComposeMail /> : <Signup />}</Route> */}
+        {/* <Route path="*">
           {!login && <Redirect to="/signup" />}
-          {login && <Redirect to="/" />}
-        </Route>
+          {login && <Redirect to="/mail" />}
+        </Route> */}
       </Switch>
     </div>
   );

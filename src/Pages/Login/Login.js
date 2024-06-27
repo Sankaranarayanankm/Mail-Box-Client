@@ -52,7 +52,7 @@ const Login = () => {
       };
       dispatch(login(obj));
       console.log(obj);
-      history.push("/welcome");
+      history.push("/mail");
     } catch (error) {
       console.log(error);
     }
