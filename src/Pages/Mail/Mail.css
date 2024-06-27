@@ -1,0 +1,43 @@
+.mail {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding:20px;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+.mail:hover {
+  cursor: pointer;
+  border-top: 2px solid whitesmoke;
+  box-shadow: 1px 2px 3px -2px rgba(0, 0, 0, 0.5);
+}
+
+.mail__left {
+  display: flex;
+  align-items: center;
+}
+.mail__middle {
+  display: flex;
+  flex: 0.8;
+  align-items: center;
+}
+
+.mail__middle > h5 {
+  width: 400px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mail__middleSpan {
+  color: gray;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.mail__time {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+}

@@ -15,6 +15,7 @@ import {
   Settings,
 } from "@mui/icons-material";
 import Section from "./Section";
+import Mail from "./Mail";
 const EmailList = () => {
   return (
     <div className="emailList">
@@ -60,6 +61,11 @@ const EmailList = () => {
       </div>
       <div className="emailList__mails">
         {/* here render a mail component which should have title time and if possible add email  */}
+        <Mail
+          title="Dummy mail"
+          time="10pm"
+          message="This is the message that you got in this dummy email"
+        />
       </div>
       {/* this is a component where i want to render the list of emails  */}
       {/* i will create a seaparte component for dislaying emails  */}
