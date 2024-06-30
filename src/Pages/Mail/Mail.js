@@ -6,9 +6,14 @@ import {
   LabelImportant,
   StarBorderOutlined,
 } from "@mui/icons-material";
+import { useHistory } from "react-router-dom";
 const Mail = ({ title, message, time }) => {
+  const history = useHistory();
+  const handleMailClick = () => {
+    history.push("/mail/mailmessage");
+  };
   return (
-    <div className="mail">
+    <div onClick={handleMailClick} className="mail">
       {/* for this there are three part  */}
       {/* the left section consist of icons  */}
       <div className="mail__left">

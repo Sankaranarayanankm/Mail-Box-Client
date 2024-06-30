@@ -5,6 +5,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import ComposeMail from "../../Components/ComposeMail/ComposeMail";
 import { Switch, Route } from "react-router-dom";
 import EmailList from "./EmailList";
+import MailMessage from "./MailMessage";
 
 const MailBody = () => {
   return (
@@ -21,6 +22,9 @@ const MailBody = () => {
           <Route path="/mail/compose">
             {/* <h1>this is compose Mail component</h1> */}
             <ComposeMail />
+          </Route>
+          <Route path="/mail/mailmessage">
+            <MailMessage />
           </Route>
         </Switch>
       </div>

@@ -27,7 +27,11 @@ const Sidebar = () => {
       </Button>
       {/* add another component called sidebar items then add and link it using usehistory  */}
       <div className="sidebar__list">
-        <SidebarItems Icon={InboxIcon} title="Inbox" />
+        <SidebarItems
+          Icon={InboxIcon}
+          title="Inbox"
+         item='inbox'
+        />
         <SidebarItems Icon={StarBorderIcon} title="Stared" />
         <SidebarItems Icon={AccessTime} title="Snoozed" />
         <SidebarItems Icon={LabelImportant} title="Important" />
