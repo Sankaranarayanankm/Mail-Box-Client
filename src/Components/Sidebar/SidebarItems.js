@@ -3,17 +3,16 @@ import "./SidebarItems.css";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 const SidebarItems = ({ Icon, title, item }) => {
-  const receivedMails = useSelector((state) => state.mail.receivedMails);
+  const history = useHistory();
+  const receivedMails = useSelector((state) => state.mail.userReceivedMails);
   console.log(receivedMails);
+
   const totalUnread = receivedMails.reduce((acc, item) => {
-    // let count=0;
     if (!item.seen) {
       acc += 1;
     }
     return acc;
   }, 0);
-  // console.log(totalUnread);
-  const history = useHistory();
 
   const navigate = () => {
     if (item == "inbox") {

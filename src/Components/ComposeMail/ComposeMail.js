@@ -46,8 +46,11 @@ const ComposeMail = () => {
 
     const updatedEmail = email.replace(/[@.]/g, "");
     const updatedReceiverEmail = state.to.replace(/[@.]/g, "");
+    // const targetUser = state.to;
     dispatch(handleSendMail(updatedEmail, obj));
-    dispatch(handleReceivedMail(updatedReceiverEmail, obj));
+    dispatch(
+      handleReceivedMail(updatedReceiverEmail, { ...obj, email  })
+    );
 
     console.log("message sent");
   };

@@ -9,17 +9,22 @@ import {
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { readMessage } from "../../Store/actions/mail-actions";
+import { mailActions } from "../../Store/mail-slice";
 const Mail = (props) => {
   const { title, message, seen, id } = props;
-  // console.log(props);
   const history = useHistory();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
   const updatedEmail = email.replace(/[@.]/g, "");
   // console.log(updatedEmail);
+
+
+
   const handleMailClick = () => {
     history.push(`/mail/${id}`);
     dispatch(readMessage(updatedEmail, { ...props, seen: true }, id));
+    // console.log(id); i am getting the id here
+    
   };
 
   return (

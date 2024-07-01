@@ -18,7 +18,7 @@ export function handleSendMail(updatedEmail, mail) {
         throw new Error(errData.error.message);
       }
       const data = await response.json();
-      // dispatch(mailActions.sendMailHandler({ id: data.name, ...mail }));
+      dispatch(mailActions.sendMailHandler({ id: data.name, ...mail }));
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +43,7 @@ export function handleReceivedMail(updatedEmail, mail) {
         throw new Error(errData.error.message);
       }
       const data = await response.json();
-      // dispatch(mailActions.receivedMailHandler({ id: data.name, ...mail }));
+      dispatch(mailActions.receivedMailHandler({ id: data.name, ...mail }));
     } catch (error) {
       console.log(error);
     }
@@ -118,11 +118,12 @@ export function readMessage(updatedEmail, obj, id) {
         const errData = await response.json();
         throw new Error(errData.error.message);
       }
-      const data = await response.json();
-      return data;
+      // const data = await response.json();
+      // return data;
     }
     try {
       await handleReadMessage();
+      dispatch(mailActions.markMailAsRead(id));
     } catch (error) {
       console.log(error);
     }

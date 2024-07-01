@@ -10,9 +10,7 @@ import MailMessage from "./MailMessage";
 const MailBody = () => {
   return (
     <div className="mailbody">
-      {/* add header here  */}
       <Header />
-      {/* add side bar and mail list component inside a body so to give flex  */}
       <div className="mailbody__body">
         <Sidebar />
         <Switch>
@@ -23,7 +21,6 @@ const MailBody = () => {
             <EmailList />
           </Route>
           <Route path="/mail/compose">
-            {/* <h1>this is compose Mail component</h1> */}
             <ComposeMail />
           </Route>
           <Route path="/mail/:mailId">
@@ -31,11 +28,6 @@ const MailBody = () => {
           </Route>
         </Switch>
       </div>
-      {/* here we need to add route for mail list and mail item  everytime we must dispaly header and sidebar */}
-
-      {/* then add side bar here  */}
-
-      {/* then add maillist and mail here  */}
     </div>
   );
 };

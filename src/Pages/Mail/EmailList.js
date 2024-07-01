@@ -18,11 +18,10 @@ import Section from "./Section";
 import Mail from "./Mail";
 import { useSelector } from "react-redux";
 const EmailList = () => {
-  const receivedMails = useSelector((state) => state.mail.receivedMails);
-  // console.log(sendMails[0]);
+  const receivedMails = useSelector((state) => state.mail.userReceivedMails);
+  console.log(receivedMails)
   return (
     <div className="emailList">
-      {/* add email list settings section which has some icons on right and left  */}
       <div className="emailList__settings">
         <div className="emailList__settingsLeft">
           <IconButton>

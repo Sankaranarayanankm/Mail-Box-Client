@@ -13,18 +13,21 @@ import {
 
 const App = () => {
   const login = useSelector((state) => state.auth.isLogin);
-  const sendMails = useSelector((state) => state.mails);
+  const mails = useSelector((state) => state.mail);
+  // console.log(receivedMails);
+
   const email = useSelector((state) => state.auth.email);
   const updatedEmail = email.replace(/[@.]/g, "");
-  // console.log(updatedEmail);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadLocalStorage());
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(handleGetSendMails(updatedEmail));
     dispatch(handleGetReceivedMails(updatedEmail));
-  }, [dispatch, sendMails, updatedEmail]);
+  }, [dispatch, updatedEmail]);
   return (
     <div>
       <Switch>
