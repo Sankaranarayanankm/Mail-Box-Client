@@ -34,7 +34,7 @@ const Mail = ({ title, message, time }) => {
         </h5>
       </div>
       {/*and the last section cosist of icons  */}
-      <div className="mail__time">10pm</div>
+      {/* <div className="mail__time">10pm</div> */}
     </div>
   );
 };
