@@ -25,13 +25,20 @@ const mailSlice = createSlice({
       }
     },
     markMailAsRead(state, action) {
-      
       const readMail = state.userReceivedMails.find(
         (mail) => mail.id == action.payload
       );
       if (readMail) {
         readMail.seen = true;
       }
+    },
+    deleteMailHandler(state, action) {
+      state.receivedMails = state.receivedMails.filter(
+        (item) => item.id != action.payload
+      );
+      state.userReceivedMails = state.userReceivedMails.filter(
+        (item) => item.id != action.payload
+      );
     },
   },
 });

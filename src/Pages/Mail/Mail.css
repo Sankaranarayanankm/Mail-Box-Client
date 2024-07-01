@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding:20px;
+  padding: 20px;
   height: 40px;
   border-bottom: 1px solid black;
 }
@@ -39,5 +39,12 @@
 .mail__time {
   position: absolute;
   top: 4px;
+  right: 5px;
+}
+
+.mail__delete {
+  color: red;
+  position: absolute;
+  top: 5px;
   right: 5px;
 }

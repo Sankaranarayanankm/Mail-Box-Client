@@ -3,12 +3,13 @@ import "./Mail.css";
 import { IconButton } from "@mui/material";
 import {
   CheckBoxOutlineBlank,
+  Delete,
   LabelImportant,
   StarBorderOutlined,
 } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { readMessage } from "../../Store/actions/mail-actions";
+import { deleteMail, readMessage } from "../../Store/actions/mail-actions";
 import { mailActions } from "../../Store/mail-slice";
 const Mail = (props) => {
   const { title, message, seen, id } = props;
@@ -16,12 +17,15 @@ const Mail = (props) => {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
   const updatedEmail = email.replace(/[@.]/g, "");
-  // console.log(updatedEmail);
 
   const handleMailClick = () => {
     history.push(`/mail/${id}`);
     dispatch(readMessage(updatedEmail, { ...props, seen: true }, id));
-    // console.log(id); i am getting the id here
+  };
+  const deleteHandler = (event, id) => {
+    event.stopPropagation();
+    console.log(id);
+    dispatch(deleteMail(updatedEmail, id));
   };
 
   return (
@@ -42,6 +46,14 @@ const Mail = (props) => {
         <h5>
           {title} -<span className="mail__middleSpan"> {message}</span>
         </h5>
+      </div>
+      <div className="mail__right">
+        <IconButton
+          className="mail__delete"
+          onClick={(event) => deleteHandler(event, id)}
+        >
+          <Delete />
+        </IconButton>
       </div>
     </div>
   );
