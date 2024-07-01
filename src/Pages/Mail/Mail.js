@@ -18,13 +18,10 @@ const Mail = (props) => {
   const updatedEmail = email.replace(/[@.]/g, "");
   // console.log(updatedEmail);
 
-
-
   const handleMailClick = () => {
     history.push(`/mail/${id}`);
     dispatch(readMessage(updatedEmail, { ...props, seen: true }, id));
     // console.log(id); i am getting the id here
-    
   };
 
   return (

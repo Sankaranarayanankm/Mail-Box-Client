@@ -19,7 +19,7 @@ import Mail from "./Mail";
 import { useSelector } from "react-redux";
 const EmailList = () => {
   const receivedMails = useSelector((state) => state.mail.userReceivedMails);
-  console.log(receivedMails)
+  // console.log(receivedMails)
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -62,10 +62,11 @@ const EmailList = () => {
         {receivedMails.map((mail) => (
           <Mail
             key={mail.id}
-            id={mail.id}
+            {...mail}
+            // id={mail.id}
             title={mail.topic}
-            message={mail.message}
-            time={mail.time}
+            // message={mail.message}
+            // time={mail.time}
             seen={mail.seen}
           />
         ))}

@@ -16,7 +16,6 @@ const mailSlice = createSlice({
       });
     },
     receivedMailHandler(state, action) {
-      // console.log(action.payload);
       state.receivedMails.push({
         ...action.payload,
         time: action.payload.time,
@@ -26,14 +25,13 @@ const mailSlice = createSlice({
       }
     },
     markMailAsRead(state, action) {
-      // const readMail=state.receivedMails.find(mail=>mail.id==action.payload.id);
-      // if(readMail){
-      //   readMail.seen=true;
-      // }
-      const mailIndex = state.receivedMails.findIndex(
-        (item) => item.id == action.payload.id
+      
+      const readMail = state.userReceivedMails.find(
+        (mail) => mail.id == action.payload
       );
-      state.receivedMails[mailIndex].seen = true;
+      if (readMail) {
+        readMail.seen = true;
+      }
     },
   },
 });

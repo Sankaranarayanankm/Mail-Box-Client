@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const SidebarItems = ({ Icon, title, item }) => {
   const history = useHistory();
   const receivedMails = useSelector((state) => state.mail.userReceivedMails);
-  console.log(receivedMails);
+  // console.log(receivedMails);
 
   const totalUnread = receivedMails.reduce((acc, item) => {
     if (!item.seen) {

@@ -101,13 +101,20 @@ export function handleGetReceivedMails(updatedEmail) {
 }
 
 // function for reading messages
+/*
+  ONE IDEA
+  note => when we do this the mails will be unorganized or we will have to sort it based on time  
+  
+  so what i am planning to do is first we are going to delete the current mail
+  then we add a new mail 
+  */
 export function readMessage(updatedEmail, obj, id) {
   return async (dispatch) => {
     async function handleReadMessage() {
       const response = await fetch(
         `https://mail-box-client-7fd46-default-rtdb.firebaseio.com/receive${updatedEmail}/${id}.json`,
         {
-          method: "PATCH",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -118,11 +125,12 @@ export function readMessage(updatedEmail, obj, id) {
         const errData = await response.json();
         throw new Error(errData.error.message);
       }
-      // const data = await response.json();
-      // return data;
+      const data = await response.json();
+      return data;
     }
     try {
-      await handleReadMessage();
+      const value = await handleReadMessage();
+      console.log(value);
       dispatch(mailActions.markMailAsRead(id));
     } catch (error) {
       console.log(error);
