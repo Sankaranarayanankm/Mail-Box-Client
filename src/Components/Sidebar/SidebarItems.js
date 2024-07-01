@@ -1,9 +1,20 @@
 import React from "react";
 import "./SidebarItems.css";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 const SidebarItems = ({ Icon, title, item }) => {
-  // console.log(item);
+  const receivedMails = useSelector((state) => state.mail.receivedMails);
+  console.log(receivedMails);
+  const totalUnread = receivedMails.reduce((acc, item) => {
+    // let count=0;
+    if (!item.seen) {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
+  // console.log(totalUnread);
   const history = useHistory();
+
   const navigate = () => {
     if (item == "inbox") {
       history.push("/mail");
@@ -12,8 +23,11 @@ const SidebarItems = ({ Icon, title, item }) => {
 
   return (
     <div onClick={navigate} className="sidebaritems">
-      <Icon />
-      <h4>{title}</h4>
+      <div className="sidebaritems__title">
+        <Icon />
+        <h4>{title}</h4>
+      </div>
+      {item == "inbox" && <p className="sidebaritems__unread">{totalUnread}</p>}
     </div>
   );
 };

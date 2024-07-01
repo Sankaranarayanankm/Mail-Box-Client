@@ -3,19 +3,31 @@
   margin: 2px;
   align-items: center;
   padding: 7px;
+  justify-content: space-between;
   /* background-color: red; */
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   cursor: pointer;
-  color:gray;
+  color: gray;
 }
 .sidebaritems:hover {
   background-color: rgb(242, 215, 215);
-  color:brown;
+  color: brown;
+}
+.sidebaritems__title {
+  display: flex;
 }
 
-.sidebaritems > h4 {
+.sidebaritems__title > h4 {
   font-weight: bolder;
   font-size: 16px;
   margin-left: 4px;
+}
+
+.sidebaritems__unread {
+  display: none;
+}
+.sidebaritems:hover > p {
+  display: block;
+  font-weight: 700;
 }
