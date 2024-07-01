@@ -74,3 +74,57 @@ export function handleGetSendMails(updatedEmail) {
     }
   };
 }
+
+export function handleGetReceivedMails(updatedEmail) {
+  return async (dispatch) => {
+    async function getReceivedMails() {
+      const response = await fetch(
+        `https://mail-box-client-7fd46-default-rtdb.firebaseio.com/receive${updatedEmail}.json`
+      );
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error.message);
+      }
+      const data = await response.json();
+      return data;
+    }
+    try {
+      const mails = await getReceivedMails();
+      for (let val in mails) {
+        const data = { id: val, ...mails[val] };
+        dispatch(mailActions.receivedMailHandler(data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+// function for reading messages
+export function readMessage(updatedEmail, obj, id) {
+  return async (dispatch) => {
+    async function handleReadMessage() {
+      const response = await fetch(
+        `https://mail-box-client-7fd46-default-rtdb.firebaseio.com/receive${updatedEmail}/${id}.json`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }
+      );
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error.message);
+      }
+      const data = await response.json();
+      return data;
+    }
+    try {
+      await handleReadMessage();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

@@ -26,7 +26,7 @@ const MailBody = () => {
             {/* <h1>this is compose Mail component</h1> */}
             <ComposeMail />
           </Route>
-          <Route path="/mail/mailmessage">
+          <Route path="/mail/:mailId">
             <MailMessage />
           </Route>
         </Switch>

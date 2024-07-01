@@ -6,7 +6,10 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loadLocalStorage } from "./Store/actions/auth-actions";
 import MailBody from "./Pages/Mail/MailBody";
-import { handleGetSendMails } from "./Store/actions/mail-actions";
+import {
+  handleGetReceivedMails,
+  handleGetSendMails,
+} from "./Store/actions/mail-actions";
 
 const App = () => {
   const login = useSelector((state) => state.auth.isLogin);
@@ -20,6 +23,7 @@ const App = () => {
   }, [dispatch]);
   useEffect(() => {
     dispatch(handleGetSendMails(updatedEmail));
+    dispatch(handleGetReceivedMails(updatedEmail));
   }, [dispatch, sendMails, updatedEmail]);
   return (
     <div>

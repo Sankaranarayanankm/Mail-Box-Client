@@ -15,10 +15,15 @@ import {
   UnfoldMore,
   WatchLater,
 } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MailMessage = () => {
   const history = useHistory();
+  const sendMailList = useSelector((state) => state.mail.receivedMails);
+  const params = useParams();
+  const mailDetails = sendMailList.find((item) => item.id == params.mailId);
+  // console.log(mailDetails);
   return (
     <div className="mailMessage">
       <div className="mailMessage__tools">
@@ -66,14 +71,14 @@ const MailMessage = () => {
       </div>
       <div className="mailMessage__body">
         <div className="mailMessage__bodyHeader">
-          <h2>Subject</h2>
+          <h2>{mailDetails.topic}</h2>
           <ArrowForward />
-          <p>title</p>
-          <p className="mailMessage__time">time</p>
+          <p>{mailDetails.to}</p>
+          <p className="mailMessage__time">{mailDetails.time}</p>
         </div>
 
         <div className="mailMessage__messge">
-          <p>This is the message part</p>
+          <p>{mailDetails.message}</p>
         </div>
       </div>
     </div>

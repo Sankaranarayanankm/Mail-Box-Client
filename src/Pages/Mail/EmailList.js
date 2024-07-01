@@ -18,8 +18,8 @@ import Section from "./Section";
 import Mail from "./Mail";
 import { useSelector } from "react-redux";
 const EmailList = () => {
-  const sendMails = useSelector((state) => state.mail.sendMails);
-  console.log(sendMails[0]);
+  const receivedMails = useSelector((state) => state.mail.receivedMails);
+  // console.log(sendMails[0]);
   return (
     <div className="emailList">
       {/* add email list settings section which has some icons on right and left  */}
@@ -60,13 +60,14 @@ const EmailList = () => {
         <Section Icon={LocalOffer} title="Promotions" color="green" />
       </div>
       <div className="emailList__mails">
-        {sendMails.map((mail) => (
+        {receivedMails.map((mail) => (
           <Mail
             key={mail.id}
             id={mail.id}
             title={mail.topic}
             message={mail.message}
             time={mail.time}
+            seen={mail.seen}
           />
         ))}
       </div>

@@ -7,18 +7,26 @@ import {
   StarBorderOutlined,
 } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-const Mail = ({ title, message, time }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { readMessage } from "../../Store/actions/mail-actions";
+const Mail = (props) => {
+  const { title, message, seen, id } = props;
+  // console.log(props);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.auth.email);
+  const updatedEmail = email.replace(/[@.]/g, "");
+  // console.log(updatedEmail);
   const handleMailClick = () => {
-    history.push("/mail/mailmessage");
+    history.push(`/mail/${id}`);
+    dispatch(readMessage(updatedEmail, { ...props, seen: true }, id));
   };
+
   return (
     <div onClick={handleMailClick} className="mail">
-      {/* for this there are three part  */}
-      {/* the left section consist of icons  */}
       <div className="mail__left">
         <IconButton>
-          <CheckBoxOutlineBlank />
+          <input type="checkbox" checked={seen} />
         </IconButton>
         <IconButton>
           <StarBorderOutlined />
@@ -27,14 +35,12 @@ const Mail = ({ title, message, time }) => {
           <LabelImportant />
         </IconButton>
       </div>
-      {/* the middle section consist of test */}
+
       <div className="mail__middle">
         <h5>
-          {title} -<span className="mail__middleSpan">{message}</span>
+          {title} -<span className="mail__middleSpan"> {message}</span>
         </h5>
       </div>
-      {/*and the last section cosist of icons  */}
-      {/* <div className="mail__time">10pm</div> */}
     </div>
   );
 };

@@ -39,6 +39,7 @@ const ComposeMail = () => {
     const message = rawContent.blocks.map((item) => item.text).join(" ");
     const obj = {
       ...state,
+      seen: false,
       message,
       time: JSON.stringify(new Date()),
     };
