@@ -19,7 +19,15 @@ import Mail from "./Mail";
 import { useSelector } from "react-redux";
 const EmailList = () => {
   const receivedMails = useSelector((state) => state.mail.userReceivedMails);
-  // console.log(receivedMails)
+  const sendMails = useSelector((state) => state.mail.sendMails);
+  const selectedOption = useSelector((state) => state.sidebar.display);
+  let renderMails;
+  if (selectedOption == "inbox") {
+    renderMails = receivedMails;
+  } else if (selectedOption == "sent") {
+    renderMails = sendMails;
+  }
+  // console.log(renderMails[0]);
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -59,14 +67,12 @@ const EmailList = () => {
         <Section Icon={LocalOffer} title="Promotions" color="green" />
       </div>
       <div className="emailList__mails">
-        {receivedMails.map((mail) => (
+        {renderMails.map((mail) => (
           <Mail
             key={mail.id}
+            selectedOption={selectedOption}
             {...mail}
-            // id={mail.id}
             title={mail.topic}
-            // message={mail.message}
-            // time={mail.time}
             seen={mail.seen}
           />
         ))}

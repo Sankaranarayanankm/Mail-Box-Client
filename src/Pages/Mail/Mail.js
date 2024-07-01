@@ -10,21 +10,20 @@ import {
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteMail, readMessage } from "../../Store/actions/mail-actions";
-import { mailActions } from "../../Store/mail-slice";
+
 const Mail = (props) => {
-  const { title, message, seen, id } = props;
+  const { title, message, seen, selectedOption, id } = props;
   const history = useHistory();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
   const updatedEmail = email.replace(/[@.]/g, "");
-
+  // console.log(selectedOption);
   const handleMailClick = () => {
     history.push(`/mail/${id}`);
     dispatch(readMessage(updatedEmail, { ...props, seen: true }, id));
   };
   const deleteHandler = (event, id) => {
     event.stopPropagation();
-    console.log(id);
     dispatch(deleteMail(updatedEmail, id));
   };
 
@@ -32,7 +31,11 @@ const Mail = (props) => {
     <div onClick={handleMailClick} className="mail">
       <div className="mail__left">
         <IconButton>
-          <input type="checkbox" checked={seen} />
+          {selectedOption == "inbox" ? (
+            <input type="checkbox" checked={seen} />
+          ) : (
+            <CheckBoxOutlineBlank />
+          )}
         </IconButton>
         <IconButton>
           <StarBorderOutlined />

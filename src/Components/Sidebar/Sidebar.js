@@ -29,7 +29,7 @@ const Sidebar = () => {
         <SidebarItems Icon={StarBorderIcon} title="Stared" />
         <SidebarItems Icon={AccessTime} title="Snoozed" />
         <SidebarItems Icon={LabelImportant} title="Important" />
-        <SidebarItems Icon={NearMe} title="Sent" />
+        <SidebarItems Icon={NearMe} title="Sent" item="sent" />
         <SidebarItems Icon={Note} title="Drafts" />
         <SidebarItems Icon={ExpandMore} title="More" />
       </div>

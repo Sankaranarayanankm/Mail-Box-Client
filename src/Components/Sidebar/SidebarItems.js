@@ -1,9 +1,11 @@
 import React from "react";
 import "./SidebarItems.css";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { sidebarActions } from "../../Store/actions/sidebar-slice";
 const SidebarItems = ({ Icon, title, item }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const receivedMails = useSelector((state) => state.mail.userReceivedMails);
   // console.log(receivedMails);
 
@@ -16,6 +18,10 @@ const SidebarItems = ({ Icon, title, item }) => {
 
   const navigate = () => {
     if (item == "inbox") {
+      dispatch(sidebarActions.displayInbox());
+      history.push("/mail");
+    } else if (item == "sent") {
+      dispatch(sidebarActions.displaySendMails());
       history.push("/mail");
     } else return;
   };
