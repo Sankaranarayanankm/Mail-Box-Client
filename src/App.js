@@ -3,31 +3,22 @@ import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { loadLocalStorage } from "./Store/actions/auth-actions";
+import { useSelector } from "react-redux";
 import MailBody from "./Pages/Mail/MailBody";
-import {
-  handleGetReceivedMails,
-  handleGetSendMails,
-} from "./Store/actions/mail-actions";
+import useLocalStorage from "./hooks/useLocalStorage";
+import useGetMails from "./hooks/useGetMails";
+
+// add toast and logout button 
 
 const App = () => {
   const login = useSelector((state) => state.auth.isLogin);
-  const mails = useSelector((state) => state.mail);
-  // console.log(receivedMails);
-
   const email = useSelector((state) => state.auth.email);
   const updatedEmail = email.replace(/[@.]/g, "");
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadLocalStorage());
-  }, [dispatch]);
+  // using custom hooks
+  useLocalStorage();
+  useGetMails(updatedEmail);
 
-  useEffect(() => {
-    dispatch(handleGetSendMails(updatedEmail));
-    dispatch(handleGetReceivedMails(updatedEmail));
-  }, [dispatch, updatedEmail]);
   return (
     <div>
       <Switch>

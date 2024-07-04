@@ -55,7 +55,7 @@ const Mail = (props) => {
           className="mail__delete"
           onClick={(event) => deleteHandler(event, id)}
         >
-          <Delete />
+          <Delete  className="mail__deleteIcon"/>
         </IconButton>
       </div>
     </div>

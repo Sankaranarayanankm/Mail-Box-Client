@@ -36,15 +36,19 @@
   font-size: 15px;
 }
 
-.mail__time {
+/* .mail__time {
   position: absolute;
   top: 4px;
   right: 5px;
-}
+} */
 
-.mail__delete {
+.mail__right {
   color: red;
-  position: absolute;
   top: 5px;
   right: 5px;
+  position: absolute;
+}
+
+.mail__deleteIcon {
+  color: red;
 }
