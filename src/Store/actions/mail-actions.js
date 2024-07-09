@@ -1,4 +1,5 @@
 import { mailActions } from "../mail-slice";
+import toast from "react-hot-toast";
 
 export function handleSendMail(updatedEmail, mail) {
   return async (dispatch) => {
@@ -19,8 +20,10 @@ export function handleSendMail(updatedEmail, mail) {
       }
       const data = await response.json();
       dispatch(mailActions.sendMailHandler({ id: data.name, ...mail }));
+      toast.success("Mail Sent");
     } catch (error) {
       console.log(error);
+      toast.success(error.message || "Failed to send mail");
     }
   };
 }
@@ -156,8 +159,10 @@ export function deleteMail(updatedEmail, id) {
         throw new Error(errData.error.message);
       }
       dispatch(mailActions.deleteMailHandler(id));
+      toast.success("Mail Deleted");
     } catch (error) {
       console.log(error);
+      toast.error(error.message || "Failed to delete message");
     }
   };
 }

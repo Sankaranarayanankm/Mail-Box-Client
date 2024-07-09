@@ -10,7 +10,7 @@ import {
   Keyboard,
   LocalOffer,
   MoreVert,
-  People,
+  People,    
   Redo,
   Settings,
 } from "@mui/icons-material";

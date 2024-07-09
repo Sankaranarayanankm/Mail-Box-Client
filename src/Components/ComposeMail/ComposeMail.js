@@ -10,12 +10,14 @@ import {
   handleReceivedMail,
   handleSendMail,
 } from "../../Store/actions/mail-actions";
+import { Toaster } from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 const ComposeMail = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const email = useSelector((state) => state.auth.email);
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [state, setState] = useState({
     to: "",
     topic: "",
@@ -48,42 +50,43 @@ const ComposeMail = () => {
     const updatedReceiverEmail = state.to.replace(/[@.]/g, "");
     // const targetUser = state.to;
     dispatch(handleSendMail(updatedEmail, obj));
-    dispatch(
-      handleReceivedMail(updatedReceiverEmail, { ...obj, email  })
-    );
-
+    dispatch(handleReceivedMail(updatedReceiverEmail, { ...obj, email }));
+    history.push("/mail");
     console.log("message sent");
   };
   return (
-    <form className="composeMail" onSubmit={submitHandler}>
-      <div className="composeMail__input">
-        <label>To: </label>
-        <input
-          type="email"
-          name="to"
-          value={state.to}
-          onChange={changeHandler}
+    <>
+      <Toaster position="top-right" reverseOrder={false} />
+      <form className="composeMail" onSubmit={submitHandler}>
+        <div className="composeMail__input">
+          <label>To: </label>
+          <input
+            type="email"
+            name="to"
+            value={state.to}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="composeMail__input">
+          <label>Topic</label>
+          <input
+            type="text"
+            name="topic"
+            value={state.topic}
+            onChange={changeHandler}
+          />
+        </div>
+        <Editor
+          placeholder="Enter your message..."
+          editorState={editorState}
+          toolbarClassName="toolbarClassName"
+          wrapperClassName="wrapperClassName"
+          editorClassName="editorClassName"
+          onEditorStateChange={onEditorStateChange}
         />
-      </div>
-      <div className="composeMail__input">
-        <label>Topic</label>
-        <input
-          type="text"
-          name="topic"
-          value={state.topic}
-          onChange={changeHandler}
-        />
-      </div>
-      <Editor
-        placeholder="Enter your message..."
-        editorState={editorState}
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
-        onEditorStateChange={onEditorStateChange}
-      />
-      <Button type="submit">Send</Button>
-    </form>
+        <Button type="submit">Send</Button>
+      </form>
+    </>
   );
 };
 

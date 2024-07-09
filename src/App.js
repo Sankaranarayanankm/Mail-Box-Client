@@ -8,7 +8,7 @@ import MailBody from "./Pages/Mail/MailBody";
 import useLocalStorage from "./hooks/useLocalStorage";
 import useGetMails from "./hooks/useGetMails";
 
-// add toast and logout button 
+// add toast and logout button  add one for making http call
 
 const App = () => {
   const login = useSelector((state) => state.auth.isLogin);

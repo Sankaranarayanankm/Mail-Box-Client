@@ -6,6 +6,7 @@ import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../Store/auth-slice";
 import { login } from "../../Store/actions/auth-actions";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -50,48 +51,53 @@ const Login = () => {
         token: resData.idToken,
         email: resData.email,
       };
+      toast.success("Successfully Logged in");
       dispatch(login(obj));
       console.log(obj);
       history.push("/mail");
     } catch (error) {
       console.log(error);
+      toast.error(error.message || "Failed to login");
     }
   };
   return (
-    <div className="login">
-      <h1 className="login__heading">Login</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={state.email}
-            onChange={changeHandler}
-            required
-          />
-        </Form.Group>
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <div className="login">
+        <h1 className="login__heading">Login</h1>
+        <Form onSubmit={submitHandler}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={state.email}
+              onChange={changeHandler}
+              required
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            value={state.password}
-            onChange={changeHandler}
-            required
-          />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={state.password}
+              onChange={changeHandler}
+              required
+            />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-        <p>
-          Don't have an account?
-          <Link to="/signup">Signup</Link>
-        </p>
-      </Form>
-    </div>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <p>
+            Don't have an account?
+            <Link to="/signup">Signup</Link>
+          </p>
+        </Form>
+      </div>
+    </>
   );
 };
 
