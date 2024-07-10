@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
-import "./Signup.css";
 import APIKEY from "../../APIKEY";
 import toast, { Toaster } from "react-hot-toast";
 const Signup = () => {
@@ -58,8 +57,8 @@ const Signup = () => {
     <>
       <Toaster position="top-center" reverseOrder={false} />
 
-      <div className="form">
-        <h1 className="form__heading">SignUp</h1>
+      <Container className="form w-auto border border-dark border-1 rounded-2 px-4 py-3 text-dark fs-5 fw-bold shadow">
+        <h1 className=" text-center mb-4">SignUp</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -70,7 +69,7 @@ const Signup = () => {
               onChange={changeHandler}
               required
             />
-            <Form.Text className="text-muted">
+            <Form.Text className="text-muted fw-light">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
@@ -78,6 +77,7 @@ const Signup = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              className=""
               type="password"
               name="password"
               value={state.password}
@@ -97,15 +97,17 @@ const Signup = () => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button className="w-auto" variant="primary" type="submit">
             Submit
           </Button>
           <p>
             Have an Account?
-            <Link to="/login">Login</Link>
+            <Link className="text-light text-decoration-none" to="/login">
+              Login
+            </Link>
           </p>
         </Form>
-      </div>
+      </Container>
     </>
   );
 };

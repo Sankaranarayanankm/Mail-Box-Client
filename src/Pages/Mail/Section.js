@@ -1,6 +1,5 @@
 import React from "react";
 import "./Section.css";
-import { BorderBottom } from "@mui/icons-material";
 
 const Section = ({ Icon, title, color, selected }) => {
   const style = {
@@ -8,9 +7,14 @@ const Section = ({ Icon, title, color, selected }) => {
     color: `${selected && color}`,
   };
   return (
-    <div className={`section ${selected && "section--selected"}`} style={style}>
+    <div
+      className={`section d-flex align-items-center p-3  min-width-200  ${
+        selected && "section--selected"
+      }`}
+      style={style}
+    >
       <Icon />
-      <h4>{title}</h4>
+      <h4 className="ms-1 fs-6">{title}</h4>
     </div>
   );
 };

@@ -1,33 +1,25 @@
 .sidebaritems {
-  display: flex;
-  margin: 2px;
-  align-items: center;
-  padding: 7px;
-  justify-content: space-between;
-  /* background-color: red; */
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  position: relative;
   cursor: pointer;
-  color: gray;
+  transition: background-color 0.3s ease;
 }
 .sidebaritems:hover {
   background-color: rgb(242, 215, 215);
   color: brown;
 }
-.sidebaritems__title {
-  display: flex;
-}
 
-.sidebaritems__title > h4 {
-  font-weight: bolder;
-  font-size: 16px;
-  margin-left: 4px;
+.sidebaritems:hover > p {
+  display: inline;
+  font-weight: 700;
 }
 
 .sidebaritems__unread {
   display: none;
-}
-.sidebaritems:hover > p {
-  display: block;
-  font-weight: 700;
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: brown;
 }

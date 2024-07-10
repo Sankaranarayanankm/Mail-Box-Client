@@ -10,7 +10,7 @@ import {
   Keyboard,
   LocalOffer,
   MoreVert,
-  People,    
+  People,
   Redo,
   Settings,
 } from "@mui/icons-material";
@@ -29,9 +29,9 @@ const EmailList = () => {
   }
   // console.log(renderMails[0]);
   return (
-    <div className="emailList">
-      <div className="emailList__settings">
-        <div className="emailList__settingsLeft">
+    <div className="emailList mt-0 with-100">
+      <div className=" d-flex align-items-center justify-content-between  border-bottom">
+        <div className=" d-flex align-items-center">
           <IconButton>
             <CheckBoxOutlineBlank />
           </IconButton>
@@ -45,7 +45,7 @@ const EmailList = () => {
             <MoreVert />
           </IconButton>
         </div>
-        <div className="emailList__settingsRight">
+        <div className=" d-flex align-items-center">
           <IconButton>
             <ArrowLeft />
           </IconButton>
@@ -61,7 +61,7 @@ const EmailList = () => {
         </div>
       </div>
 
-      <div className="emailList__sections">
+      <div className=" d-flex align-items-center ">
         <Section Icon={Inbox} title="Primary" color="red" selected />
         <Section Icon={People} title="Social" color="blue" />
         <Section Icon={LocalOffer} title="Promotions" color="green" />

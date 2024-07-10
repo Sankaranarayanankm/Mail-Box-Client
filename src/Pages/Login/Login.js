@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import "./Login.css";
-import { Button, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import APIKEY from "../../APIKEY";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { authActions } from "../../Store/auth-slice";
 import { login } from "../../Store/actions/auth-actions";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -63,8 +61,8 @@ const Login = () => {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="login">
-        <h1 className="login__heading">Login</h1>
+      <Container className=" w-auto h-auto px-4 py-3 rounded-2 text-dark fw-bold fs-5 shadow border border-1 border-dark">
+        <h1 className="text-center mb-4">Login</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -88,15 +86,17 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button className="w-auto" variant="primary" type="submit">
             Submit
           </Button>
           <p>
             Don't have an account?
-            <Link to="/signup">Signup</Link>
+            <Link className="text-decoration-none text-light" to="/signup">
+              Signup
+            </Link>
           </p>
         </Form>
-      </div>
+      </Container>
     </>
   );
 };

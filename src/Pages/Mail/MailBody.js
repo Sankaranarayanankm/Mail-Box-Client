@@ -1,5 +1,4 @@
 import React from "react";
-import "./MailBody.css";
 import Header from "../../Components/Header/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import ComposeMail from "../../Components/ComposeMail/ComposeMail";
@@ -11,7 +10,7 @@ const MailBody = () => {
   return (
     <div className="mailbody">
       <Header />
-      <div className="mailbody__body">
+      <div className="d-flex p-1">
         <Sidebar />
         <Switch>
           <Route exact path="/">

@@ -9,6 +9,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import useGetMails from "./hooks/useGetMails";
 
 // add toast and logout button  add one for making http call
+// add bootstrap classes
 
 const App = () => {
   const login = useSelector((state) => state.auth.isLogin);

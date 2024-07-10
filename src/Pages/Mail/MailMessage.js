@@ -25,9 +25,9 @@ const MailMessage = () => {
   const mailDetails = sendMailList.find((item) => item.id == params.mailId);
   // console.log(mailDetails);
   return (
-    <div className="mailMessage">
-      <div className="mailMessage__tools">
-        <div className="mailMessage__toolsLeft">
+    <div className=" w-100 bg-light">
+      <div className="mailMessage__tools d-flex align-items-center justify-content-between ">
+        <div className=" d-flex align-items-center">
           <IconButton onClick={() => history.push("/mail")}>
             <ArrowBack />
           </IconButton>
@@ -55,7 +55,7 @@ const MailMessage = () => {
             <MoreVert />
           </IconButton>
         </div>
-        <div className="mailMessage__toolsRight">
+        <div className=" d-flex align-items-center">
           <IconButton>
             <UnfoldMore />
           </IconButton>
@@ -69,16 +69,18 @@ const MailMessage = () => {
           </IconButton>
         </div>
       </div>
-      <div className="mailMessage__body">
-        <div className="mailMessage__bodyHeader">
-          <h2>{mailDetails.topic}</h2>
-          <ArrowForward />
+      <div className="mailMessage__body p-3 d-flex flex-column m-4 shadow-lg">
+        <div className="mailMessage__bodyHeader d-flex align-items-center">
+          <h2 className="fw-normal me-2 border-bottom p-4">
+            {mailDetails.topic}
+          </h2>
+          <ArrowForward className="me-4" />
           <p>{mailDetails.to}</p>
           <p className="mailMessage__time">{mailDetails.time}</p>
         </div>
 
-        <div className="mailMessage__messge">
-          <p>{mailDetails.message}</p>
+        <div className="mailMessage__messge p-2 me-2">
+          <p className="ms-3">{mailDetails.message}</p>
         </div>
       </div>
     </div>

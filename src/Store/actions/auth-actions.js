@@ -12,6 +12,13 @@ export const login = (details) => {
   };
 };
 
+export const logout = () => {
+  return (dispatch) => {
+    localStorage.removeItem("details");
+    dispatch(authActions.logout());
+  };
+};
+
 export const loadLocalStorage = () => {
   return (dispatch) => {
     try {
@@ -25,4 +32,3 @@ export const loadLocalStorage = () => {
     }
   };
 };
-    

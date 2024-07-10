@@ -57,10 +57,14 @@ const ComposeMail = () => {
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
-      <form className="composeMail" onSubmit={submitHandler}>
-        <div className="composeMail__input">
+      <form
+        className="composeMail border border-2 p-3 m-auto"
+        onSubmit={submitHandler}
+      >
+        <div className="composeMail__input d-flex align-items-center  mb-1 ">
           <label>To: </label>
           <input
+            className="border-bottom"
             type="email"
             name="to"
             value={state.to}
@@ -70,6 +74,7 @@ const ComposeMail = () => {
         <div className="composeMail__input">
           <label>Topic</label>
           <input
+            className="border-none border-bottom"
             type="text"
             name="topic"
             value={state.topic}

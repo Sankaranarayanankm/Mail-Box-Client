@@ -27,12 +27,15 @@ const Mail = (props) => {
     event.stopPropagation();
     dispatch(deleteMail(updatedEmail, id));
   };
-
+  // console.log(selectedOption);
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
-      <div onClick={handleMailClick} className="mail">
-        <div className="mail__left">
+      <div
+        onClick={handleMailClick}
+        className="mail d-flex align-items-center p-3 border-bottom"
+      >
+        <div className=" d-flex align-items-center">
           <IconButton>
             {selectedOption == "inbox" ? (
               <input type="checkbox" checked={seen} />
@@ -48,18 +51,21 @@ const Mail = (props) => {
           </IconButton>
         </div>
 
-        <div className="mail__middle">
-          <h5>
-            {title} -<span className="mail__middleSpan"> {message}</span>
+        <div className="mail__middle d-flex align-items-center ">
+          <h5 className="fw-bold fs-5">
+            {title} -
+            <span className="mail__middleSpan fw-normal fs-6"> {message}</span>
           </h5>
         </div>
-        <div className="mail__right">
-          <IconButton
-            className="mail__delete"
-            onClick={(event) => deleteHandler(event, id)}
-          >
-            <Delete className="mail__deleteIcon" />
-          </IconButton>
+        <div className="mail__right text-danger">
+          {selectedOption == "inbox" && (
+            <IconButton
+              className="mail__delete"
+              onClick={(event) => deleteHandler(event, id)}
+            >
+              <Delete className="text-danger" />
+            </IconButton>
+          )}
         </div>
       </div>
     </>

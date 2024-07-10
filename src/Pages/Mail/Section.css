@@ -1,12 +1,9 @@
 .section {
-  display: flex;
-  align-items: center;
-  padding: 15px;
   height: 40px;
   min-width: 200px;
-  background-color: white;
   cursor: pointer;
   color: gray;
+  background-color: white;
   border-width: 0px !important;
 }
 .section:hover {
@@ -17,8 +14,4 @@
 .section--selected {
   background-color: whitesmoke;
   border-width: 3px !important;
-}
-.section > h4 {
-  margin-left: 4px;
-  font-size: 14px;
 }
