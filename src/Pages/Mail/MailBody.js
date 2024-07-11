@@ -5,29 +5,34 @@ import ComposeMail from "../../Components/ComposeMail/ComposeMail";
 import { Switch, Route, Redirect } from "react-router-dom";
 import EmailList from "./EmailList";
 import MailMessage from "./MailMessage";
+import { Container, Row, Col } from "react-bootstrap";
 
 const MailBody = () => {
   return (
-    <div className="mailbody">
+    <Container fluid className="mailbody">
       <Header />
-      <div className="d-flex p-1">
-        <Sidebar />
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/mail" />
-          </Route>
-          <Route exact path="/mail">
-            <EmailList />
-          </Route>
-          <Route path="/mail/compose">
-            <ComposeMail />
-          </Route>
-          <Route path="/mail/:mailId">
-            <MailMessage />
-          </Route>
-        </Switch>
-      </div>
-    </div>
+      <Row className="p-1">
+        <Col md={3}>
+          <Sidebar />
+        </Col>
+        <Col md={9}>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/mail" />
+            </Route>
+            <Route exact path="/mail">
+              <EmailList />
+            </Route>
+            <Route path="/mail/compose">
+              <ComposeMail />
+            </Route>
+            <Route path="/mail/:mailId">
+              <MailMessage />
+            </Route>
+          </Switch>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
