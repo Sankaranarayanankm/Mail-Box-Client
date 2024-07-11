@@ -103,14 +103,7 @@ export function handleGetReceivedMails(updatedEmail) {
   };
 }
 
-// function for reading messages
-/*
-  ONE IDEA
-  note => when we do this the mails will be unorganized or we will have to sort it based on time  
-  
-  so what i am planning to do is first we are going to delete the current mail
-  then we add a new mail 
-  */
+
 export function readMessage(updatedEmail, obj, id) {
   return async (dispatch) => {
     async function handleReadMessage() {

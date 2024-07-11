@@ -8,9 +8,11 @@ import {
 function useGetMails(updatedEmail) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(handleGetSendMails(updatedEmail));
-    dispatch(handleGetReceivedMails(updatedEmail));
-  }, [dispatch,updatedEmail]);
+    if (!!updatedEmail) {
+      dispatch(handleGetSendMails(updatedEmail));
+      dispatch(handleGetReceivedMails(updatedEmail));
+    }
+  }, [dispatch, updatedEmail]);
 }
 
 export default useGetMails;

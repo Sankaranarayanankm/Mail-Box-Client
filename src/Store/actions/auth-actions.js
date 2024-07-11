@@ -1,4 +1,5 @@
 import { authActions } from "../auth-slice";
+import { mailActions } from "../mail-slice";
 
 export const login = (details) => {
   return (dispatch) => {
@@ -16,6 +17,7 @@ export const logout = () => {
   return (dispatch) => {
     localStorage.removeItem("details");
     dispatch(authActions.logout());
+    dispatch(mailActions.clearMails());
   };
 };
 
